@@ -4,6 +4,7 @@ Detect and extract license plate.
 ## Method
 This detection uses an haar-cascade file to detect license plate.<br>
 Example<br>
+<img src="http://answers.opencv.org/upfiles/14039682835002835.jpg"/><br>
 ```java
    		String xmlFile = "plate.xml";
 		CascadeClassifier classifier = new CascadeClassifier(xmlFile);
@@ -53,3 +54,4 @@ Example<br>
 
 		}
     ```
+    
