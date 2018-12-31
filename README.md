@@ -8,15 +8,15 @@ Example<br>
    		String xmlFile = "plate.xml";
 		CascadeClassifier classifier = new CascadeClassifier(xmlFile);
 
-		// Detecting the face in the snap
-		MatOfRect faceDetections = new MatOfRect();
+		// Detecting the license plate in the snap
+		MatOfRect detections = new MatOfRect();
 		
-		classifier.detectMultiScale(src, faceDetections);
-		System.out.println(String.format("Detected %s faces", faceDetections.toArray().length));
+		classifier.detectMultiScale(src, detections);
+		System.out.println(String.format("Detected %s faces", detections.toArray().length));
 
 		// Drawing boxes
 		int n = 0;
-		for (Rect rect : faceDetections.toArray()) {
+		for (Rect rect : detections.toArray()) {
 
 			Imgproc.rectangle(src, // where to draw the box
 					new Point(rect.x, rect.y), // bottom left
