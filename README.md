@@ -5,7 +5,7 @@ Detect and extract license plate.
 This detection uses an haar-cascade file to detect license plate.<br>
 Example<br>
 ```java
-    String xmlFile = "plate.xml";
+   		String xmlFile = "plate.xml";
 		CascadeClassifier classifier = new CascadeClassifier(xmlFile);
 
 		// Detecting the face in the snap
