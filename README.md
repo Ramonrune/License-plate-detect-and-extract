@@ -6,52 +6,52 @@ This detection uses an haar-cascade file to detect license plate.<br>
 Example<br>
 <img src="http://answers.opencv.org/upfiles/14039682835002835.jpg"/><br>
 ```java
-   		String xmlFile = "plate.xml";
-		CascadeClassifier classifier = new CascadeClassifier(xmlFile);
+String xmlFile = "plate.xml";
+CascadeClassifier classifier = new CascadeClassifier(xmlFile);
 
-		// Detecting the license plate in the snap
-		MatOfRect detections = new MatOfRect();
-		
-		classifier.detectMultiScale(src, detections);
-		System.out.println(String.format("Detected %s faces", detections.toArray().length));
+// Detecting the license plate in the snap
+MatOfRect detections = new MatOfRect();
 
-		// Drawing boxes
-		int n = 0;
-		for (Rect rect : detections.toArray()) {
+classifier.detectMultiScale(src, detections);
+System.out.println(String.format("Detected %s faces", detections.toArray().length));
 
-			Imgproc.rectangle(src, // where to draw the box
-					new Point(rect.x, rect.y), // bottom left
-					new Point(rect.x + rect.width, rect.y + rect.height), // top right
-					new Scalar(0, 0, 255), 3 // RGB colour
-			);
+// Drawing boxes
+int n = 0;
+for (Rect rect : detections.toArray()) {
 
-			Rect roi = new Rect(rect.x, rect.y, rect.width, rect.height);
-			Mat cropped = new Mat(src, roi);
+	Imgproc.rectangle(src, // where to draw the box
+			new Point(rect.x, rect.y), // bottom left
+			new Point(rect.x + rect.width, rect.y + rect.height), // top right
+			new Scalar(0, 0, 255), 3 // RGB colour
+	);
 
-			Imgcodecs.imwrite("temp.jpg", cropped);
+	Rect roi = new Rect(rect.x, rect.y, rect.width, rect.height);
+	Mat cropped = new Mat(src, roi);
 
-			// Encoding the image
-			MatOfByte matOfByte = new MatOfByte();
-			Imgcodecs.imencode(".jpg", cropped, matOfByte);
+	Imgcodecs.imwrite("temp.jpg", cropped);
 
-			// Storing the encoded Mat in a byte array
-			byte[] byteArray = matOfByte.toArray();
+	// Encoding the image
+	MatOfByte matOfByte = new MatOfByte();
+	Imgcodecs.imencode(".jpg", cropped, matOfByte);
 
-			// Preparing the Buffered Image
-			InputStream in = new ByteArrayInputStream(byteArray);
-			try {
-				BufferedImage bufImage = ImageIO.read(in);
-				JLabel l = new JLabel("Imagem " + n);
-				l.setSize(new Dimension(200, 100));
+	// Storing the encoded Mat in a byte array
+	byte[] byteArray = matOfByte.toArray();
 
-				l.setIcon(new ImageIcon(bufImage));
-				listpossible.add(l);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			n++;
+	// Preparing the Buffered Image
+	InputStream in = new ByteArrayInputStream(byteArray);
+	try {
+		BufferedImage bufImage = ImageIO.read(in);
+		JLabel l = new JLabel("Imagem " + n);
+		l.setSize(new Dimension(200, 100));
 
-		}
-    ```
+		l.setIcon(new ImageIcon(bufImage));
+		listpossible.add(l);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	n++;
+
+}
+```
     
