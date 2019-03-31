@@ -1,4 +1,7 @@
 # License plate detection
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a3d989e67291492d9440b4f4727a4412)](https://app.codacy.com/app/Ramonrune/license-plate-detection?utm_source=github.com&utm_medium=referral&utm_content=Ramonrune/license-plate-detection&utm_campaign=Badge_Grade_Dashboard)
+
 Detect and extract license plate.
 
 ## Method
