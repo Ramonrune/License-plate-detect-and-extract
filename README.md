@@ -16,7 +16,7 @@ CascadeClassifier classifier = new CascadeClassifier(xmlFile);
 MatOfRect detections = new MatOfRect();
 
 classifier.detectMultiScale(src, detections);
-System.out.println(String.format("Detected %s faces", detections.toArray().length));
+System.out.println(String.format("Detected %s plates", detections.toArray().length));
 
 // Drawing boxes
 int n = 0;
